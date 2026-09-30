@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#05070d">
+  <title>Dr Ice • Mini App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="doctor-avatar">🧑‍⚕️</div>
+        <div>
+          <strong>DR ICE</strong>
+          <span>MINI APP</span>
+        </div>
+      </div>
+      <button class="icon-btn" aria-label="Profil" onclick="showPage('profile')">◉</button>
+    </header>
+
+    <main id="content">
+      <section class="page active" id="home">
+        <div class="hero">
+          <div class="hero-glow"></div>
+          <div class="doctor-art" aria-label="Docteur futuriste">🧑‍⚕️</div>
+          <p class="eyebrow">BIENVENUE CHEZ</p>
+          <h1>DR <span>ICE</span></h1>
+          <p class="subtitle">Qualité • Confiance • Expérience</p>
+          <button class="primary" onclick="showPage('shop')">EXPLORER <b>↗</b></button>
+        </div>
+
+        <div class="section-title"><h2>Nouveautés</h2><button onclick="showPage('shop')">Voir tout</button></div>
+        <div class="product-grid" id="featured"></div>
+      </section>
+
+      <section class="page" id="shop">
+        <div class="page-head"><h1>Boutique</h1><p>Découvrez le catalogue</p></div>
+        <label class="search"><span>⌕</span><input id="search" placeholder="Rechercher un produit..." oninput="renderProducts()"></label>
+        <div class="chips">
+          <button class="chip selected" onclick="setCategory('Tous',this)">Tous</button>
+          <button class="chip" onclick="setCategory('Collection',this)">Collection</button>
+          <button class="chip" onclick="setCategory('Accessoires',this)">Accessoires</button>
+          <button class="chip" onclick="setCategory('Autres',this)">Autres</button>
+        </div>
+        <div class="product-grid" id="products"></div>
+      </section>
+
+      <section class="page" id="product">
+        <button class="back" onclick="showPage('shop')">‹ Retour</button>
+        <div id="productDetail"></div>
+      </section>
+
+      <section class="page" id="cart">
+        <div class="page-head"><h1>Mon panier</h1><p id="cartCount"></p></div>
+        <div id="cartItems"></div>
+        <div class="total-box">
+          <div><span>Sous-total</span><b id="subtotal">0,00 €</b></div>
+          <div><span>Livraison</span><b>À définir</b></div>
+          <hr><div class="grand"><span>Total</span><b id="total">0,00 €</b></div>
+        </div>
+        <button class="primary full" onclick="checkout()">CONTINUER <b>→</b></button>
+      </section>
+
+      <section class="page" id="info">
+        <div class="page-head"><h1>Informations</h1><p>Tout savoir sur Dr Ice</p></div>
+        <div class="info-card"><b>✦ Notre histoire</b><span>Une présentation de ta marque.</span></div>
+        <div class="info-card"><b>◷ Horaires</b><span>Ajoute ici tes horaires d'ouverture.</span></div>
+        <div class="info-card"><b>▣ Conditions</b><span>Ajoute ici tes conditions et mentions légales.</span></div>
+        <div class="info-card"><b>?</b><span>Une question ? Consulte la FAQ ou contacte-nous.</span></div>
+      </section>
+
+      <section class="page" id="contact">
+        <div class="page-head"><h1>Contact</h1><p>Une question ? Nous sommes là.</p></div>
+        <button class="contact-card" onclick="openTelegram()"><span class="contact-icon">✈</span><div><b>Telegram</b><small>Discuter avec nous</small></div><strong>›</strong></button>
+        <button class="contact-card" onclick="openInstagram()"><span class="contact-icon">◎</span><div><b>Instagram</b><small>Voir notre page</small></div><strong>›</strong></button>
+      </section>
+
+      <section class="page" id="profile">
+        <div class="profile-card">
+          <div class="big-avatar">🧑‍⚕️</div>
+          <h1 id="profileName">Dr Ice</h1>
+          <p>Profil Telegram</p>
+        </div>
+        <div class="info-card"><b>👤 Mes informations</b><span>Connecté via Telegram</span></div>
+        <div class="info-card"><b>🛒 Mes commandes</b><span>Historique de tes commandes</span></div>
+        <div class="info-card"><b>⚙ Paramètres</b><span>Préférences de l'application</span></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav active" data-page="home" onclick="showPage('home')">⌂<span>Accueil</span></button>
+      <button class="nav" data-page="info" onclick="showPage('info')">ⓘ<span>Infos</span></button>
+      <button class="nav cart-nav" data-page="cart" onclick="showPage('cart')">🛒<i id="badge">0</i><span>Panier</span></button>
+      <button class="nav" data-page="contact" onclick="showPage('contact')">✉<span>Contact</span></button>
+      <button class="nav" data-page="profile" onclick="showPage('profile')">◉<span>Profil</span></button>
+    </nav>
+  </div>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
